@@ -16,14 +16,16 @@ public class OrganizationTestData {
 
     private static final Map<ContactType, String> CONTACTS_ORGANIZATION_1 = new EnumMap<>(ContactType.class);
     private static final Map<ContactType, String> CONTACTS_ORGANIZATION_2 = new EnumMap<>(ContactType.class);
-    private static final Address ADDRESS_1_ORGANIZATION_1 = new Address("Chadan", "7565 Golden Leaf Terrace", 18.9494246, 72.8305922, ORGANIZATION_1_ID);
-    private static final Address ADDRESS_2_ORGANIZATION_1 = new Address("Cincinnati", "2456 Buena Vista Road", 39.0745039, -84.33211, ORGANIZATION_1_ID);
+    public static final Address ADDRESS_1_ORGANIZATION_1 = new Address("Chadan", "7565 Golden Leaf Terrace", 18.9494246, 72.8305922, ORGANIZATION_1_ID);
+    public static final Address ADDRESS_2_ORGANIZATION_1 = new Address("Cincinnati", "2456 Buena Vista Road", 39.0745039, -84.33211, ORGANIZATION_1_ID);
 
     public static final Long ID_NOT_FOUND = 200L;
+
 
     static {
         CONTACTS_ORGANIZATION_1.put(ContactType.URL, "https://sfgate.com");
         CONTACTS_ORGANIZATION_2.put(ContactType.URL, "http://chron.com");
+
     }
 
     public static final Organization ORGANIZATION_1 = new Organization(ORGANIZATION_1_ID,

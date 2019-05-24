@@ -102,6 +102,14 @@ public class Address {
         this.organizationId = organizationId;
     }
 
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", Address.class.getSimpleName() + "[", "]")
@@ -110,6 +118,7 @@ public class Address {
                 .add("address='" + address + "'")
                 .add("latitude=" + latitude)
                 .add("longitude=" + longitude)
+                .add("organizationId=" + organizationId)
                 .toString();
     }
 
