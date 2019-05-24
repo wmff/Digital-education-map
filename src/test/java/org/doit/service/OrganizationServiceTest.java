@@ -13,6 +13,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.doit.OrganizationTestData.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -65,5 +66,19 @@ public class OrganizationServiceTest {
     @Test
     void getAll() {
         assertEquals(100, service.getAll().size());
+    }
+
+    @Test
+    void getWithAddresses() {
+        Organization actual = service.getWithAddresses(ORGANIZATION_1_ID);
+        assertEquals(ORGANIZATION_1, actual);
+        assertThat(actual.getAddresses()).usingElementComparatorOnFields("organizationId").isEqualTo(ORGANIZATION_1.getAddresses());
+    }
+
+    @Test
+    void getWithoutAddresses() {
+        Organization actual = service.getWithAddresses(ORGANIZATION_2_ID);
+        assertEquals(ORGANIZATION_2, actual);
+        assertEquals(0, actual.getAddresses().size());
     }
 }

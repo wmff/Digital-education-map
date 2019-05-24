@@ -40,4 +40,9 @@ public class OrganizationServiceImpl implements OrganizationService {
     public List<Organization> getAll() {
         return repository.findAll();
     }
+
+    @Override
+    public Organization getWithAddresses(Long id) {
+        return repository.getWithAddresses(id);
+    }
 }

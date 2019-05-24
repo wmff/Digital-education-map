@@ -21,6 +21,9 @@ public class Address {
 
     private Double longitude;
 
+    @Column(name = "organization_id", insertable = false, updatable = false)
+    private Long organizationId;
+
     @ManyToOne
     @JoinColumn(name = "organization_id")
     private Organization organization;
@@ -41,6 +44,14 @@ public class Address {
         this.latitude = latitude;
         this.longitude = longitude;
         this.organization = organization;
+    }
+
+    public Address(String city, String address, Double latitude, Double longitude, Long organizationId) {
+        this.city = city;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.organizationId = organizationId;
     }
 
     public Long getId() {
@@ -83,6 +94,14 @@ public class Address {
         this.longitude = longitude;
     }
 
+    public Long getOrganizationId() {
+        return organizationId;
+    }
+
+    public void setOrganizationId(Long organizationId) {
+        this.organizationId = organizationId;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", Address.class.getSimpleName() + "[", "]")
@@ -99,11 +118,12 @@ public class Address {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Address address = (Address) o;
-        return Objects.equals(id, address.id);
+        return Objects.equals(id, address.id) &&
+                Objects.equals(organizationId, address.organizationId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, organizationId);
     }
 }
